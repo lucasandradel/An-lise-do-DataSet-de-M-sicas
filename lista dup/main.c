@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     clock_t inicio_tempo, fim_tempo;
     double tempo_decorrido;
 
-    printf("----- Inserindo ----- ");
+    printf("\n\t----- Inserindo ----- \n");
 
     inicio_tempo = clock(); // Marca o início do tempo
 
@@ -18,11 +18,14 @@ int main(int argc, char *argv[]) {
 
     fim_tempo = clock(); // Marca o fim do tempo
 
+    imprimeListDup(inicio);
+
     tempo_decorrido = ((double) (fim_tempo - inicio_tempo)) / CLOCKS_PER_SEC;
-    printf("Tempo decorrido: %.6f segundos\n", tempo_decorrido);
+    printf("\n\nTempo de execução para leitura do arquivo: %.6f segundos\n", tempo_decorrido);
 
     //imprimir a lista de músicas carregadas
-    imprimeListDup(inicio);
+
+    printf("\ncheguei aqui\n ");
 
     return 0;
 }

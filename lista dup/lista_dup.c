@@ -44,19 +44,44 @@ void carregarCSV(const char *nomeArquivo, tipo_no_letra **lista) {
         perror("Erro ao abrir o arquivo");
         exit(EXIT_FAILURE);
     }
+    
 
     // Ler cada linha do arquivo CSV
     while (fgets(linha, sizeof(linha), arquivo)) {
         // Extrair os dados da linha
-        sscanf(linha, "%d,%49[^,],%49[^,],%d,%49[^,],%[^,],%*d,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%hhd,%le",
-               &novaMusica.id, novaMusica.artist_name, novaMusica.track_name, &novaMusica.release_date,
-               novaMusica.genre, novaMusica.letra, &novaMusica.danceability, &novaMusica.dating, &novaMusica.violence,
-               &novaMusica.world_life, &novaMusica.night_time, &novaMusica.shake_the_audience, &novaMusica.family_gospel,
-               &novaMusica.romantic, &novaMusica.communication, &novaMusica.obscene, &novaMusica.music,
-               &novaMusica.movement_places, &novaMusica.light_visual_perceptions, &novaMusica.family_spiritual,
-               &novaMusica.like_girls, &novaMusica.sadness, &novaMusica.feelings, &novaMusica.danceability,
-               &novaMusica.loudness, &novaMusica.acousticness, &novaMusica.instrumentalness, &novaMusica.valence,
-               &novaMusica.energy, novaMusica.topic, &novaMusica.age);
+        sscanf(linha, "%d, %49[^,],%49[^,],%d,%49[^,],%49[^,],%d,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%hhd,%le",
+       &novaMusica.id, 
+       novaMusica.artist_name, 
+       novaMusica.track_name, 
+       &novaMusica.release_date,
+       novaMusica.genre, 
+       novaMusica.letra, 
+       &novaMusica.len,
+       &novaMusica.dating, 
+       &novaMusica.violence,
+       &novaMusica.world_life, 
+       &novaMusica.night_time, 
+       &novaMusica.shake_the_audience, 
+       &novaMusica.family_gospel,
+       &novaMusica.romantic, 
+       &novaMusica.communication, 
+       &novaMusica.obscene, 
+       &novaMusica.music,
+       &novaMusica.movement_places, 
+       &novaMusica.light_visual_perceptions, 
+       &novaMusica.family_spiritual,
+       &novaMusica.like_girls, 
+       &novaMusica.sadness, 
+       &novaMusica.feelings, 
+       &novaMusica.danceability,
+       &novaMusica.loudness, 
+       &novaMusica.acousticness, 
+       &novaMusica.instrumentalness, 
+       &novaMusica.valence,
+       &novaMusica.energy, 
+       novaMusica.topic, 
+       &novaMusica.age);
+
 
         // Inserir a música na lista
         insereFimListDup(lista, novaMusica);
