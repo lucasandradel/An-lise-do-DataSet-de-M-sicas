@@ -9,7 +9,7 @@ tipo_no_letra *aloca_nohLD(Musica DadosMusic){
 
     // Verifica se a alocação de memória foi bem-sucedida
     if(novo_no == NULL){
-        printf("Erro ao alocar memória para novo nó.\n");
+        printf("Erro ao alocar memoria para novo no.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -47,6 +47,7 @@ void carregarCSV(const char *nomeArquivo, tipo_no_letra **lista) {
     FILE *arquivo;
     char linha[2000]; // Aumentei o tamanho para lidar com o campo "letra"
     Musica novaMusica;
+    int contador = 0;
 
     // Abre o arquivo para leitura
     arquivo = fopen(nomeArquivo, "r");
@@ -93,14 +94,16 @@ void carregarCSV(const char *nomeArquivo, tipo_no_letra **lista) {
 
         // Inserir a música na lista
         insereFimListDup(lista, novaMusica);
+        contador++;
     }
-
+    printf("\nQuantidade de musicas na lista = %d \n\n",contador);
     fclose(arquivo);
 }
 
 void imprimeListDup(tipo_no_letra *arquivo) {
-    printf("Lista de Músicas:\n");
-
+    printf("Lista de Musicas:\n");
+    int contador;
+    contador = 0;
     if (arquivo == NULL) {
         printf("Lista vazia\n\n");
     } else {
@@ -109,9 +112,9 @@ void imprimeListDup(tipo_no_letra *arquivo) {
             printf("\n");
             printf("ID: %d\n", musica.id);
             printf("Artista: %s\n", musica.artist_name);
-            printf("Título: %s\n", musica.track_name);
-            printf("Data de Lançamento: %d\n", musica.release_date);
-            printf("Gênero: %s\n", musica.genre);
+            printf("Titulo: %s\n", musica.track_name);
+            printf("Data de Lancamento: %d\n", musica.release_date);
+            printf("Genero: %s\n", musica.genre);
             /*printf("Letra: %s\n", musica.letra);
             printf("Len: %d\n", musica.len);
             printf("Dating: %lf\n", musica.dating);
@@ -138,13 +141,14 @@ void imprimeListDup(tipo_no_letra *arquivo) {
             printf("Energy: %lf\n", musica.energy);
             printf("Tópico: %s\n", musica.topic);
             printf("Idade: %lf\n\n", musica.age);*/
-
+            contador++;
             arquivo = arquivo->prox;
         }
+        printf("\nQuantidade de musicas na lista = %d \n\n",contador);
     }
 }
 
-//funções para segunda etapa do trabalho 
+    //funções para segunda etapa do trabalho 
 
 // Função para alocar um novo nó em uma lista encadeada simples
 nova_lista *aloca_noh(Musica DadosMusic){
@@ -205,8 +209,9 @@ nova_lista *InsereNovaLista(nova_lista *nlst, tipo_no_letra *vlst){
 
 // Função para imprimir os elementos de uma lista encadeada simples
 void imprimeListEnc(nova_lista *lst) {
-    printf("\nLista de Músicas:\n\n");
-
+    printf("\nLista de Musicas:\n\n");
+    int contador;
+    contador = 0;
     if (lst == NULL) {
         printf("Lista vazia\n\n");
     } else {
@@ -216,9 +221,9 @@ void imprimeListEnc(nova_lista *lst) {
             printf("\n");
             printf("ID: %d\n", musica.id);
             printf("Artista: %s\n", musica.artist_name);
-            printf("Título: %s\n", musica.track_name);
-            printf("Data de Lançamento: %d\n", musica.release_date);
-            printf("Gênero: %s\n", musica.genre);
+            printf("Titulo: %s\n", musica.track_name);
+            printf("Data de Lancamento: %d\n", musica.release_date);
+            printf("Genero: %s\n", musica.genre);
             /*printf("Letra: %s\n", musica.letra);
             printf("Len: %d\n", musica.len);
             printf("Dating: %lf\n", musica.dating);
@@ -245,9 +250,25 @@ void imprimeListEnc(nova_lista *lst) {
             printf("Energy: %lf\n", musica.energy);
             printf("Tópico: %s\n", musica.topic);
             printf("Idade: %lf\n\n", musica.age);*/
-
+            contador++;
             atual = atual->prox;
         }
+        printf("\n\t Quantidade de musicas com danceability maior ou igual a 0.5 eh = %d\n", contador);
     }
 }
 
+//Funcao que conta quantas musicas com genero pop tem na lista
+int contaGeneroPOP(nova_lista* lst) {
+    int contador;
+    contador = 0;
+    if (lst == NULL) {
+        return 0;
+    } else {
+        while (lst != NULL) {
+            if (lst->DadosMusica.genre[0] == 'p' && lst->DadosMusica.genre[1] == 'o' && lst->DadosMusica.genre[2] == 'p' )
+                contador++;
+            lst = lst->prox;
+        }
+        return contador;
+    }
+}

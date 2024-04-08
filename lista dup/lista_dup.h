@@ -47,7 +47,8 @@ typedef struct est_musica Musica;
 struct no_letra
 {
     Musica DadosMusic; // Dados da música armazenados neste nó
-    struct no_letra * prox, *ant; // Ponteiros para o próximo e o nó anterior
+    struct no_letra * prox; // Ponteiro para o próximo nó
+    struct no_letra * ant; // Ponteiro para o nó anterior
 };
 typedef struct no_letra tipo_no_letra; 
 
@@ -67,5 +68,6 @@ void imprimeListDup(tipo_no_letra *); // Imprime todos os elementos da lista dup
 void imprimeListEnc(nova_lista *); // Imprime todos os elementos da lista encadeada
 void carregarCSV(const char *, tipo_no_letra **); // Carrega os dados do arquivo CSV para a lista duplamente encadeada
 nova_lista *InsereNovaLista(nova_lista *, tipo_no_letra *); // Insere elementos na lista encadeada com base nos critérios especificados
+int contaGeneroPOP(nova_lista*);
 
 #endif // Fim do arquivo de inclusão de cabeçalho "__LISTA_DUP_H__"
