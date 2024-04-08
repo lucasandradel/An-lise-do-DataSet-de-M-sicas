@@ -1,10 +1,10 @@
-all: lista_dup.o
-	gcc main.c lista_dup.o -o prog
+all: TRAB_3.o
+	gcc main.c TRAB_3.o -o prog
 	./prog
 
 
-lista_dup.o: lista_dup.c
-	gcc -c lista_dup.c
+lista_dup.o: TRAB_3.c
+	gcc -c TRAB_3.c
 
 clean:
 
